@@ -1,0 +1,36 @@
+backend = "full"
+color_space = "lch"
+palette = "dark"
+alpha = 0
+
+[templates]
+hypr.template = 'hypr'
+hypr.target = '~/.config/hypr/theme.conf'
+
+waybar-sway.template = 'waybar-sway'
+waybar-sway.target = '~/.config/waybar/sway/theme.css'
+
+waybar-hypr.template = 'waybar-hypr'
+waybar-hypr.target = '~/.config/waybar/hyprland/theme.css'
+
+waybar-niri.template = 'waybar-niri'
+waybar-niri.target = '~/.config/waybar/niri/theme.css'
+
+wofi.template = 'wofi'
+wofi.target = '~/.config/wofi/theme.css'
+
+sway.template = 'sway'
+sway.target = '~/.config/sway/theme'
+
+niri.template = 'niri'
+niri.target = '~/.config/niri/theme.kdl'
+
+swaylock.template = 'swaylock'
+swaylock.target = '~/.config/swaylock/config'
+
+Xresource.template = 'Xresources'
+Xresource.target = '~/.Xresources'
+
+mako.template = 'mako'
+mako.target = '~/.config/mako/theme'
+

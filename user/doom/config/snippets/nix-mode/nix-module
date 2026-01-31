@@ -1,0 +1,19 @@
+# -*- mode: snippet -*-
+# name: nix-module 
+# key: nmod 
+# --
+
+{ config, lib, pkgs, ... }:
+
+let
+  cfg = config.${1:namespace}.${2:moduleName};
+in {
+  options.${1:namespace}.${2:moduleName} = {
+    enable = lib.mkEnableOption "${3:Description of module}";
+    $4
+  };
+
+  config = lib.mkIf cfg.enable {
+    $0
+  };
+}

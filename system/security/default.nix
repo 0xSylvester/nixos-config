@@ -1,0 +1,5 @@
+{ config, lib, pkgs, ... }:
+
+{
+  imports = [ ./networking.nix ./sudo.nix ./syncthing.nix ];
+}

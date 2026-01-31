@@ -1,0 +1,11 @@
+#colors
+include=~/.config/mako/theme
+
+default-timeout=5000
+border-size=2
+border-radius=10
+
+
+
+[urgency=high]
+border-color=#fab387
