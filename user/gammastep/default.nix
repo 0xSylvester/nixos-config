@@ -14,7 +14,7 @@ in {
       enable = true;
       package = pkgs.gammastep.override { withGeolocation = false; };
 
-      # Not real coords. Just capital of spain
+      # Set your coords with yourself dont use mine -_^ 
       latitude = 32.377533;
       longitude = 15.092017;
       tray = true;

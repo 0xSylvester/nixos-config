@@ -19,6 +19,7 @@
       keepass.enable = true;
       gammastep.enable = true;
       typst.enable = true;
+      ksshaskpass.enable = true;
     };
 
     home.username = userSettings.username;

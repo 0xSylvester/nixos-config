@@ -17,5 +17,6 @@
     ./keepass
     ./gammastep
     ./typst
+    ./ksshaskpass
   ];
 }
