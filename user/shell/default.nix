@@ -66,6 +66,15 @@ in {
         [[ -d $HOME/go/bin/ ]] && export PATH="$PATH:$HOME/go/bin"
         [[ -d $HOME/.cargo/bin/ ]] && export PATH="$PATH:$HOME/.cargo/bin"
         [[ -d $HOME/.config/emacs/bin/ ]] && export PATH="$PATH:$HOME/.config/emacs/bin"
+        # Start ssh-agent if it's not already running
+        if ! pgrep -u "$USER" ssh-agent > /dev/null; then
+            ssh-agent -s > "$HOME/.ssh/agent.env"
+        fi
+
+        # Source the agent environment variables
+        if [ -f "$HOME/.ssh/agent.env" ]; then
+            . "$HOME/.ssh/agent.env" > /dev/null
+        fi
       '';
     };
   };
