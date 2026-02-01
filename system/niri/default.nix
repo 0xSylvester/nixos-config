@@ -17,7 +17,6 @@ in {
     programs.ydotool.enable = true;
 
     environment.systemPackages = with pkgs; [
-      wlsunset
       swww
       brightnessctl
       wl-clipboard-rs

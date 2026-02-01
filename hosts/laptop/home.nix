@@ -17,6 +17,7 @@
       hypr.enable = true;
       fastfetch.enable = true;
       keepass.enable = true;
+      gammastep.enable = true;
     };
 
     home.username = userSettings.username;

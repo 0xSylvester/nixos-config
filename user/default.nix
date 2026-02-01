@@ -15,5 +15,6 @@
     ./waybar
     ./wofi
     ./keepass
+    ./gammastep
   ];
 }
