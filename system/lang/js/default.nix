@@ -11,8 +11,10 @@ in {
     environment.systemPackages = with pkgs; [
       nodejs_24
       pnpm
-      prettier
+      nodePackages.prettier
       typescript-language-server
+      vue-language-server
+      typescript
     ];
   };
 }
