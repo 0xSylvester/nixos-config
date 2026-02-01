@@ -33,6 +33,7 @@
       lang.nix.enable = true;
       lang.lua.enable = true;
       lang.c.enable = true;
+      lang.js.enable = true;
 
     };
     # Use the systemd-boot EFI boot loader.
