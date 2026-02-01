@@ -16,5 +16,6 @@
     ./wofi
     ./keepass
     ./gammastep
+    ./typst
   ];
 }
