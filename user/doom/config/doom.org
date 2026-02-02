@@ -37,8 +37,6 @@ Here where the main config will stored
 (setq user-full-name "sylvester"
       user-mail-address "mhxxx2005@gmail.com")
 
-(when (executable-find "mu")
-  (add-to-list 'load-path "/usr/share/emacs/site-lisp/mu/"))
 #+end_src
 
 ** UI
@@ -208,6 +206,7 @@ its package to make org mode look pretty
    org-agenda-tags-column 0)
   (global-org-modern-mode))
 #+end_src
+
 
 *** Org Capture
 #+begin_src emacs-lisp :tangle config.el
@@ -543,10 +542,10 @@ Emacs MultiMedia System
                "mpv"
                '(file))
          
-         ;;(list (openwith-make-extension-regexp
-         ;;       '("png" "jpeg" "jpg" "gif"))
-         ;;      "imv"
-         ;;      '(file))
+         (list (openwith-make-extension-regexp
+                '("png" "jpeg" "jpg" "gif"))
+               "imv"
+               '(file))
          
          (list (openwith-make-extension-regexp
                 '("pdf"))
@@ -558,9 +557,10 @@ Emacs MultiMedia System
                '(file))
 
          ))
-  (openwith-mode t))
+  (openwith-mode nil))
 
 #+end_src
+
 ** LSP
 #+begin_src emacs-lisp :tangle config.el
 (setq lsp-rust-analyzer-linked-projects ["Cargo.toml"])
@@ -624,13 +624,6 @@ For more info for packaging in doom read =Package management= in doom doc
   :recipe (:host nil
            :repo "https://git.sr.ht/~meow_king/typst-ts-mode"))
 (package! ox-typst)
-
-;; Simple llm client
-(package! gptel :recipe (:nonrecursive t))
-
-(package! helm-system-packages
-  :recipe (:host github
-           :repo "emacs-helm/helm-system-packages"))
 
 (package! ox-reveal)
 (package! tmr)
@@ -737,7 +730,7 @@ To get info about the module press =SPC h d h= or move the cursor to the module 
        lookup              ; navigate your code and its documentation
        lsp               ; M-x vscode
        magit             ; a git porcelain for Emacs
-       make              ; run make tasks from Emacs
+       ;;make              ; run make tasks from Emacs
        pass              ; password manager for nerds
        pdf               ; pdf enhancements
        ;;terraform         ; infrastructure as code
@@ -788,7 +781,7 @@ To get info about the module press =SPC h d h= or move the cursor to the module 
        ;;lua               ; one-based indices? one-based indices
        markdown            ; writing docs for people to ignore
        ;;nim               ; python + lisp at the speed of c
-       (nix +lsp)              ; I hereby declare "nix geht mehr!"
+       nix               ; I hereby declare "nix geht mehr!"
        ;;ocaml             ; an objective camel
        (org +roam2)        ; organize your plain life in plain text
        ;;php               ; perl's insecure younger brother
@@ -810,7 +803,7 @@ To get info about the module press =SPC h d h= or move the cursor to the module 
        ;;solidity          ; do you need a blockchain? No.
        ;;swift             ; who asked for emoji variables?
        ;;terra             ; Earth and Moon in alignment for performance.
-       (web +lsp)          ; the tubes
+       (web)          ; the tubes
        yaml              ; JSON, but readable
        ;;zig               ; C, but simpler
 

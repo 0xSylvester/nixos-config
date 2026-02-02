@@ -40,13 +40,6 @@
            :repo "https://git.sr.ht/~meow_king/typst-ts-mode"))
 (package! ox-typst)
 
-;; Simple llm client
-(package! gptel :recipe (:nonrecursive t))
-
-(package! helm-system-packages
-  :recipe (:host github
-           :repo "emacs-helm/helm-system-packages"))
-
 (package! ox-reveal)
 (package! tmr)
 

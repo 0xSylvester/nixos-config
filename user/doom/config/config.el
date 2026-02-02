@@ -2,9 +2,6 @@
 (setq user-full-name "sylvester"
       user-mail-address "mhxxx2005@gmail.com")
 
-(when (executable-find "mu")
-  (add-to-list 'load-path "/usr/share/emacs/site-lisp/mu/"))
-
 (setq doom-font (font-spec :family "Inconsolata" :size 18))
 (setq doom-symbol-font (font-spec :family "Inconsolata Nerd Font Propo"))
 (setq doom-emoji-font (font-spec :family "Inconsolata Nerd Font Propo"))
@@ -388,10 +385,10 @@
                "mpv"
                '(file))
          
-         ;;(list (openwith-make-extension-regexp
-         ;;       '("png" "jpeg" "jpg" "gif"))
-         ;;      "imv"
-         ;;      '(file))
+         (list (openwith-make-extension-regexp
+                '("png" "jpeg" "jpg" "gif"))
+               "imv"
+               '(file))
          
          (list (openwith-make-extension-regexp
                 '("pdf"))
@@ -403,7 +400,7 @@
                '(file))
 
          ))
-  (openwith-mode t))
+  (openwith-mode nil))
 
 (setq lsp-rust-analyzer-linked-projects ["Cargo.toml"])
 
