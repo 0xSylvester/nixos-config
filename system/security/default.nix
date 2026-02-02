@@ -1,5 +1,5 @@
 { config, lib, pkgs, ... }:
 
 {
-  imports = [ ./networking.nix ./sudo.nix ./syncthing.nix ];
+  imports = [ ./networking.nix ./sudo.nix ./syncthing.nix ./adb.nix ];
 }

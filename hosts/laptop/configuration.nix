@@ -13,6 +13,7 @@
       security.networking.enable = true;
       security.sudo.enable = true;
       security.syncthing.enable = true;
+      security.adb.enable = true;
 
       nh.enable = true;
       ly.enable = true;
