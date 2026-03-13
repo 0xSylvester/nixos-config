@@ -7,6 +7,7 @@
 (package! consult-org-roam)
 (package! svg-tag-mode)
 (package! ox-typst)
+(package! org-roam-ui)
 
 ;; Icons
 (package! nerd-icons)

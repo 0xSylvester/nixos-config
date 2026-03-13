@@ -126,6 +126,7 @@ To pin dim run =focus-pin= and for unpin =focus-unpin=
         :desc "Toggle Dim" "D" #'focus-mode))
 
 #+end_src
+
 ** Terminal
 
 #+begin_src emacs-lisp :tangle config.el
@@ -206,7 +207,6 @@ its package to make org mode look pretty
    org-agenda-tags-column 0)
   (global-org-modern-mode))
 #+end_src
-
 
 *** Org Capture
 #+begin_src emacs-lisp :tangle config.el
@@ -367,7 +367,18 @@ its package to make org mode look pretty
           "s" #'consult-org-roam-search
           "r" #'org-roam-node-insert
           "c" #'org-roam-capture)))
-#+end_src 
+#+end_src
+
+***  Roam-ui
+#+begin_src emacs-lisp :tangle config.el
+(use-package! org-roam-ui
+  :after org-roam
+  :config
+  (setq org-roam-ui-sync-theme t       ; Matches your Emacs colors
+        org-roam-ui-follow t           ; Graph focuses on the note you are writing
+        org-roam-ui-update-on-save t   ; Live updates
+        org-roam-ui-open-on-start nil)) ; Don't open browser until you ask
+#+end_src
 
 ** Org presentation
 This configuration for setup org mode to use it as presentation tool
@@ -608,6 +619,7 @@ For more info for packaging in doom read =Package management= in doom doc
 (package! consult-org-roam)
 (package! svg-tag-mode)
 (package! ox-typst)
+(package! org-roam-ui)
 
 ;; Icons
 (package! nerd-icons)

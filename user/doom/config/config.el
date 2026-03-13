@@ -260,6 +260,14 @@
           "r" #'org-roam-node-insert
           "c" #'org-roam-capture)))
 
+(use-package! org-roam-ui
+  :after org-roam
+  :config
+  (setq org-roam-ui-sync-theme t       ; Matches your Emacs colors
+        org-roam-ui-follow t           ; Graph focuses on the note you are writing
+        org-roam-ui-update-on-save t   ; Live updates
+        org-roam-ui-open-on-start nil)) ; Don't open browser until you ask
+
 (defun config/presentation-start ()
   (setq text-scale-mode-amount 3)
   (setq olivetti-body-width 60)
