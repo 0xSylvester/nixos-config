@@ -268,6 +268,30 @@
         org-roam-ui-update-on-save t   ; Live updates
         org-roam-ui-open-on-start nil)) ; Don't open browser until you ask
 
+(use-package! org-download
+  :config
+  (setq org-download-method 'attach
+        org-download-display-inline-images t
+        org-download-heading-lvl nil
+        org-download-timestamp "%Y%m%d-%H%M%S_"
+        
+        ;; Centralized hidden folder for all your college/coding images
+        org-download-image-dir "~/Documents/org/roam/.attachments")
+
+  (setq org-download-screenshot-method "niri msg action screenshot-screen --path %s")
+
+  ;;(org-download-enable-dev-bindings)
+
+  (setq org-download-image-html-width 500
+        org-download-image-latex-width 0.8
+        org-download-annotate-function (lambda (_link) ""))) ; Removes the annoying timestamp text above images
+
+  ;; 5. Keybindings
+(map! :leader
+      :prefix ("n" . "notes")
+      :desc "Paste screenshot" "p" #'org-download-clipboard
+      :desc "Yank image URL"  "y" #'org-download-yank)
+
 (defun config/presentation-start ()
   (setq text-scale-mode-amount 3)
   (setq olivetti-body-width 60)

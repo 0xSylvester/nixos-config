@@ -8,6 +8,7 @@
 (package! svg-tag-mode)
 (package! ox-typst)
 (package! org-roam-ui)
+(package! org-download)
 
 ;; Icons
 (package! nerd-icons)
