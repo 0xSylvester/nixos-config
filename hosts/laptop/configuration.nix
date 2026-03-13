@@ -51,10 +51,8 @@
       mpv
       brave
       telegram-desktop
-      gimp
       sxiv
       zathura
-      obs-studio
       emacs-pgtk
     ];
 

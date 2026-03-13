@@ -219,39 +219,46 @@
         
 (add-hook! 'org-agenda-mode-hook 'config/agenda-init)
 
-(setq org-roam-directory "~/Documents/org/roam")
+;; Place this in your ~/.doom.d/config.el
+(after! org-roam
+  ;; 1. Core Directory Setup
+  (setq org-roam-directory (file-truename "~/Documents/org/roam"))
+  (setq org-roam-db-autosync-mode t)
 
-(setq org-roam-node-display-template
-      "${title:65}📝${tags:*}")
+  ;; 2. Visuals: Making the node list look clean
+  (setq org-roam-node-display-template "${title:60} 🏷️ ${tags:*}")
 
-(setq org-roam-list-files-commands '(rg find)) ;; command for search org-roam files
-(use-package! consult-org-roam
-   :ensure t
-   :after org-roam
-   :init
-   (require 'consult-org-roam)
-   ;; Activate the minor mode
-   (consult-org-roam-mode 1)
-   :custom
-   ;; Use `ripgrep' for searching with `consult-org-roam-search'
-   (consult-org-roam-grep-func #'consult-ripgrep)
-   ;; Configure a custom narrow key for `consult-buffer'
-   (consult-org-roam-buffer-narrow-key ?r)
-   ;; Display org-roam buffers right after non-org-roam buffers
-   ;; in consult-buffer (and not down at the bottom)
-   (consult-org-roam-buffer-after-buffers t)
-   :config
-   ;; Eventually suppress previewing for certain functions
-   (consult-customize
-    consult-org-roam-forward-links
-    :preview-key "M-.")
-   :bind
-   ;; Define some convenient keybindings as an addition
-   ("C-c n e" . consult-org-roam-file-find)
-   ("C-c n b" . consult-org-roam-backlinks)
-   ("C-c n B" . consult-org-roam-backlinks-recursive)
-   ("C-c n l" . consult-org-roam-forward-links)
-   ("C-c n r" . consult-org-roam-search))
+  ;; 3. Intelligent Capture Templates
+  ;; These automatically file notes into subfolders based on the type
+  (setq org-roam-capture-templates
+        '(("d" "Default (General)" plain "%?"
+           :target (file+head "general/%<%Y%m%d%H%M%S>-${slug}.org" 
+                              "#+title: ${title}\n#+filetags: :draft:\n\n* Concepts\n")
+           :unnarrowed t)
+          ("c" "College" plain "%?"
+ :target (file+head "college/%<%Y%m%d%H%M%S>-${slug}.org" 
+                    "#+title: ${title}\n#+filetags: :college:lecture:\n\n* Course: %^{Course Name}\n* Lecture: %^{Lecture #}\n* Date: %t\n\n* Objectives\n* Notes\n%?\n* Summary & Questions")
+ :unnarrowed t)
+          ("p" "Programming/Dev" plain "%?"
+           :target (file+head "coding/%<%Y%m%d%H%M%S>-${slug}.org" 
+                              "#+title: ${title}\n#+filetags: :dev:concept:\n\n* Logic & Implementation\n#+begin_src %^{language}\n%?\n#+end_src")
+           :unnarrowed t)))
+
+  ;; 4. Integrated Search with Consult
+  (use-package! consult-org-roam
+    :init
+    (consult-org-roam-mode 1)
+    :config
+    (setq consult-org-roam-grep-func #'consult-ripgrep)
+    (setq consult-org-roam-buffer-narrow-key ?r)
+    ;; Keybindings using Doom's 'map!' macro for consistency
+    (map! :leader
+          :prefix ("n" . "notes") ;; Access via 'SPC n'
+          "f" #'consult-org-roam-file-find
+          "b" #'consult-org-roam-backlinks
+          "s" #'consult-org-roam-search
+          "r" #'org-roam-node-insert
+          "c" #'org-roam-capture)))
 
 (defun config/presentation-start ()
   (setq text-scale-mode-amount 3)
@@ -285,6 +292,15 @@
 (require 'dired-x)
 (setq dired-omit-files 
         (concat dired-omit-files "\\|^\\..*"))
+
+(with-eval-after-load 'dired
+  (require 'dired-x)
+  (setq dired-guess-shell-alist-user
+        '(("\\.mp4\\'" "mpv")
+          ("\\.mkv\\'" "mpv")
+          ("\\.png\\'" "imv")
+          ("\\.jpg\\'" "imv")
+          ("\\.jpeg\\'" "imv"))))
 
 (use-package nerd-icons-completion
   :after marginalia
