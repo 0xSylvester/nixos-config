@@ -424,32 +424,6 @@
 
 (add-hook! 'typst-ts-mode-hook #'lsp!)
 
-(use-package! openwith
-  :config
-  (setq openwith-associations
-        (list
-         (list (openwith-make-extension-regexp
-                '("mp3" "mp4"))
-               "mpv"
-               '(file))
-         
-         (list (openwith-make-extension-regexp
-                '("png" "jpeg" "jpg" "gif"))
-               "imv"
-               '(file))
-         
-         (list (openwith-make-extension-regexp
-                '("pdf"))
-               "zathura"
-               '(file))
-         (list (openwith-make-extension-regexp
-                '("pptx"))
-               "firefox"
-               '(file))
-
-         ))
-  (openwith-mode nil))
-
 (setq lsp-rust-analyzer-linked-projects ["Cargo.toml"])
 
 (use-package! ox-reveal)
