@@ -125,15 +125,23 @@
 (defun config/agenda-init ()
     (olivetti-mode))
 
-(after! org-agenda
+(defun sylvester/update-agenda-files-from-roam ()
+  "Add all roam files with a TODO state to org-agenda-files."
+  (interactive)
   (setq org-agenda-files
-        '("/home/sylvester/Documents/org/Agenda/agenda.org"
-          "/home/sylvester/Documents/org/Agenda/personal.org"
-          "/home/sylvester/Documents/org/Agenda/home.org"
-          "/home/sylvester/Documents/org/Agenda/collage.org"
-          "/home/sylvester/Documents/org/Agenda/dragonware.org"
-          "/home/sylvester/Documents/org/Agenda/computer.org"))
+        (append '("/home/sylvester/Documents/org/Agenda/agenda.org"
+                  "/home/sylvester/Documents/org/Agenda/personal.org"
+                  "/home/sylvester/Documents/org/Agenda/home.org"
+                  "/home/sylvester/Documents/org/Agenda/collage.org"
+                  "/home/sylvester/Documents/org/Agenda/dragonware.org"
+                  "/home/sylvester/Documents/org/Agenda/computer.org")
+                (directory-files-recursively "~/Documents/org/roam" "\\.org$"))))
 
+;; Run this to refresh your files
+(after! org-roam
+  (sylvester/update-agenda-files-from-roam))
+
+(after! org-agenda
   (setq org-agenda-span 1
         org-agenda-start-day "+0d")
 
@@ -155,68 +163,51 @@
           (tags . " %i %-12:c ")
           (search . " %i %-12:c ")))
 
-)
-
-(setq org-agenda-category-icon-alist
-      `(("Home" ,(list (all-the-icons-faicon "home" :v-adjust 0.005)) nil nil :ascent center)
-        ("Personal" ,(list (all-the-icons-faicon "user" :v-adjust 0.005)) nil nil :ascent center)
-        ("Collage" ,(list (all-the-icons-faicon "graduation-cap" :v-adjust 0.005)) nil nil :ascent center )
-        ("Dragonware" ,(list (all-the-icons-wicon "cloud" :v-adjust 0.005)) nil nil :ascent center )
-        ("Computer" ,(list (all-the-icons-faicon "code" :v-adjust 0.005)) nil nil :ascent center )))
-
+  (setq org-agenda-category-icon-alist
+        `(("Home" ,(list (all-the-icons-faicon "home" :v-adjust 0.005)) nil nil :ascent center)
+          ("Personal" ,(list (all-the-icons-faicon "user" :v-adjust 0.005)) nil nil :ascent center)
+          ("College" ,(list (all-the-icons-faicon "graduation-cap" :v-adjust 0.005)) nil nil :ascent center)
+          ("Dragonware" ,(list (all-the-icons-wicon "cloud" :v-adjust 0.005)) nil nil :ascent center)
+          ("Computer" ,(list (all-the-icons-faicon "code" :v-adjust 0.005)) nil nil :ascent center))))
 
 (use-package! org-super-agenda
-  :config (org-super-agenda-mode t))
+  :after org-agenda
+  :config
+  (setq org-super-agenda-groups
+        '((:name " Overdue "
+           :deadline past
+           :face 'error
+           :order 1)
+          
+          (:name " DeadLine "
+           :deadline future
+           :order 2)
+          
+          
 
-(setq org-super-agenda-groups
-      '((:name "Overdue "
-         :order 1
-         :scheduled past
-         :deadline past
-         :face 'error)
-        
-        (:name " DeadLine "
-         :deadline future
-         :order 2
-         :face 'error)
-        
-        (:name " Today "
-          :file-path "agenda"
-          :scheduled today
-          :date today
-          :order 3
-          :face 'warning)
-        
-        (:name "Personal "
-         :and(:file-path "personal" :not (:tag "event"))
-         :order 4
-         :face 'diary)
-        
-        (:name "Collage "
-         :and(:file-path "collage" :not (:tag "event"))
-         :order 4
-         :face 'diary)
-        
-        (:name "Dragonware "
-         :and(:file-path "dragonware" :not (:tag "event"))
-         :order 4
-         :face 'diary)
-        
-        (:name "Computer "
-         :and(:file-path "computer" :not (:tag "event"))
-         :order 4
-         :face 'diary)
-        
-        (:name "Home "
-         :and(:file-path "home" :not (:tag "event"))
-         :order 4
-         :face 'diary)
-        
-        
-        
-         
-         ))
-        
+          (:name "College "
+           :and (:file-path "college" :not (:tag "event"))
+           :order 4)
+
+          (:name "Dragonware "
+           :and (:file-path "dragonware" :not (:tag "event"))
+           :order 5)
+
+          (:name "Computer "
+           :and (:file-path "computer" :not (:tag "event"))
+           :order 6)
+
+          (:name "Home "
+           :and (:file-path "home" :not (:tag "event"))
+           :order 7)
+          
+          (:name " Today "
+           :scheduled today
+           :order 3)
+          ))
+  (org-super-agenda-mode 1))
+
+       
 (add-hook! 'org-agenda-mode-hook 'config/agenda-init)
 
 ;; Place this in your ~/.doom.d/config.el
