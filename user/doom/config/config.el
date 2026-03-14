@@ -218,7 +218,7 @@
 
   ;; 2. Visuals: Making the node list look clean
   (setq org-roam-node-display-template "${title:60} 🏷️ ${tags:*}")
-
+  
   ;; 3. Intelligent Capture Templates
   ;; These automatically file notes into subfolders based on the type
   (setq org-roam-capture-templates
@@ -250,6 +250,12 @@
           "s" #'consult-org-roam-search
           "r" #'org-roam-node-insert
           "c" #'org-roam-capture)))
+
+(map! :leader
+      (:prefix ("n" . "notes")
+       (:prefix ("d" . "dailies")
+        :desc "Today's Note" "t" #'org-roam-dailies-goto-today
+        :desc "Capture to Daily" "c" #'org-roam-dailies-capture-today)))
 
 (use-package! org-roam-ui
   :after org-roam
@@ -307,6 +313,8 @@
 
 
 
+
+(setq projectile-enable-caching nil)
 
 (use-package! nerd-icons-dired
   :hook
