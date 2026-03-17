@@ -208,7 +208,36 @@ its package to make org mode look pretty
 #+end_src
 
 *** Org Capture
+
 #+begin_src emacs-lisp :tangle config.el
+
+(after! org-capture 
+  (setq org-capture-templates
+        '(("t" "Personal todo" entry 
+           (file+headline +org-capture-todo-file "Inbox")
+           "* TODO [ ] %?\n%i\n%a\n"
+           :prepend t :kill-buffer t :empty-lines-after 1 )
+          
+          ("n" "Personal notes" entry
+           (file+headline +org-capture-notes-file "Inbox")
+           "* %?\n%t%a"
+           :prepend t :kill-buffer t :empty-lines-after 1 )
+          
+          ("p" "Templates for projects")
+          ("pt" "Project todo" entry 
+           (file+headline +org-capture-project-todo-file "Inbox")
+           "* TODO [ ] %?\n%i\n%a\n"
+           :prepend t :kill-buffer t :empty-lines-after 1 )
+          
+          ("pn" "Project notes" entry
+           (file+headline +org-capture-project-notes-file "Inbox")
+           "* %?\n%t%a"
+           :prepend t :kill-buffer t :empty-lines-after 1 )
+          
+          ("pc" "Project Changelog" entry
+           (file+headline +org-capture-project-changelog-file "Inbox")
+           "* %U %?\n%i\n%a"
+           :prepend t :kill-buffer t :empty-lines-after 1 ))))
 #+end_src
 
 *** Todo
@@ -361,9 +390,6 @@ My org agenda view
         :desc "Today's Note" "t" #'org-roam-dailies-goto-today
         :desc "Capture to Daily" "c" #'org-roam-dailies-capture-today)))
 #+end_src
-
-#+RESULTS:
-: org-roam-dailies-capture-today
 
 ***  Roam-ui
 #+begin_src emacs-lisp :tangle config.el

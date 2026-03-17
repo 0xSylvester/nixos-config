@@ -112,7 +112,33 @@
    org-agenda-tags-column 0)
   (global-org-modern-mode))
 
-
+(after! org-capture 
+  (setq org-capture-templates
+        '(("t" "Personal todo" entry 
+           (file+headline +org-capture-todo-file "Inbox")
+           "* TODO [ ] %?\n%i\n%a\n"
+           :prepend t :kill-buffer t :empty-lines-after 1 )
+          
+          ("n" "Personal notes" entry
+           (file+headline +org-capture-notes-file "Inbox")
+           "* %?\n%t%a"
+           :prepend t :kill-buffer t :empty-lines-after 1 )
+          
+          ("p" "Templates for projects")
+          ("pt" "Project todo" entry 
+           (file+headline +org-capture-project-todo-file "Inbox")
+           "* TODO [ ] %?\n%i\n%a\n"
+           :prepend t :kill-buffer t :empty-lines-after 1 )
+          
+          ("pn" "Project notes" entry
+           (file+headline +org-capture-project-notes-file "Inbox")
+           "* %?\n%t%a"
+           :prepend t :kill-buffer t :empty-lines-after 1 )
+          
+          ("pc" "Project Changelog" entry
+           (file+headline +org-capture-project-changelog-file "Inbox")
+           "* %U %?\n%i\n%a"
+           :prepend t :kill-buffer t :empty-lines-after 1 ))))
 
 (use-package! svg-tag-mode)
 
