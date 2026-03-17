@@ -74,8 +74,6 @@
   (setq olivetti-body-width 120)
   (olivetti-mode))
 
-;;(use-package! visual-fill-column
-;;  :hook (org-mode . config/org-mode-visual-fill))
 (add-hook 'org-mode-hook #'config/org-mode-init)
 
 (use-package! org-auto-tangle
@@ -125,37 +123,34 @@
 (defun config/agenda-init ()
     (olivetti-mode))
 
-(defun sylvester/update-agenda-files-from-roam ()
+(defun config/update-agenda-files-from-roam ()
   "Add all roam files with a TODO state to org-agenda-files."
   (interactive)
   (setq org-agenda-files
         (append '("/home/sylvester/Documents/org/Agenda/agenda.org"
                   "/home/sylvester/Documents/org/Agenda/personal.org"
-                  "/home/sylvester/Documents/org/Agenda/home.org"
-                  "/home/sylvester/Documents/org/Agenda/collage.org"
+                  "/home/sylvester/Documents/org/Agenda/college.org"
                   "/home/sylvester/Documents/org/Agenda/dragonware.org"
                   "/home/sylvester/Documents/org/Agenda/computer.org")
                 (directory-files-recursively "~/Documents/org/roam" "\\.org$"))))
 
-;; Run this to refresh your files
 (after! org-roam
-  (sylvester/update-agenda-files-from-roam))
+  (config/update-agenda-files-from-roam))
 
 (after! org-agenda
   (setq org-agenda-span 1
         org-agenda-start-day "+0d")
-
+  
+  (setq org-agenda-current-span "")
+  (setq org-agenda-time-grid '((dialy) () "" ""))
+  (setq org-agenda-hide-tags-regexp ".*")
+  
   (custom-set-faces!
     '(org-agenda-date :inherit outline-1 :height 1.15)
     '(org-agenda-date-today :inherit diary :height 1.15)
     '(org-agenda-date-weekend :inherit outline-2 :height 1.15)
     '(org-agenda-date-weekend-today :inherit outline-4 :height 1.15)
     '(org-super-agenda-header  :box (:line-width 2 :color "black " :style pressed-button )  :weight bold :height 1.3))
-
-
-  (setq org-agenda-current-span "")
-  (setq org-agenda-time-grid '((dialy) () "" ""))
-  (setq org-agenda-hide-tags-regexp ".*")
 
   (setq org-agenda-prefix-format
         '((agenda . "  %?-2i %t ")
@@ -164,15 +159,19 @@
           (search . " %i %-12:c ")))
 
   (setq org-agenda-category-icon-alist
-        `(("Home" ,(list (all-the-icons-faicon "home" :v-adjust 0.005)) nil nil :ascent center)
-          ("Personal" ,(list (all-the-icons-faicon "user" :v-adjust 0.005)) nil nil :ascent center)
-          ("College" ,(list (all-the-icons-faicon "graduation-cap" :v-adjust 0.005)) nil nil :ascent center)
-          ("Dragonware" ,(list (all-the-icons-wicon "cloud" :v-adjust 0.005)) nil nil :ascent center)
-          ("Computer" ,(list (all-the-icons-faicon "code" :v-adjust 0.005)) nil nil :ascent center))))
+        `(("personal" ,(list (all-the-icons-faicon "user" :v-adjust 0.005)) nil nil :ascent center)
+          ("college" ,(list (all-the-icons-faicon "graduation-cap" :v-adjust 0.005)) nil nil :ascent center)
+          ("dragonware" ,(list (all-the-icons-wicon "cloud" :v-adjust 0.005)) nil nil :ascent center)
+          ("computer" ,(list (all-the-icons-faicon "code" :v-adjust 0.005)) nil nil :ascent center)
+          ("agenda" ,(list (all-the-icons-faicon "calendar" :v-adjust 0.005)) nil nil :ascent center))))
+
 
 (use-package! org-super-agenda
   :after org-agenda
   :config
+  ;; This prevents super-agenda headers from having a different keymap than the rest of the buffer
+  (setq org-super-agenda-header-map (make-sparse-keymap))
+  
   (setq org-super-agenda-groups
         '((:name " Overdue "
            :deadline past
@@ -182,8 +181,6 @@
           (:name " DeadLine "
            :deadline future
            :order 2)
-          
-          
 
           (:name "College "
            :and (:file-path "college" :not (:tag "event"))
@@ -197,45 +194,41 @@
            :and (:file-path "computer" :not (:tag "event"))
            :order 6)
 
-          (:name "Home "
-           :and (:file-path "home" :not (:tag "event"))
-           :order 7)
-          
           (:name " Today "
            :scheduled today
-           :order 3)
-          ))
+           :order 3)))
+  
   (org-super-agenda-mode 1))
 
        
 (add-hook! 'org-agenda-mode-hook 'config/agenda-init)
 
-;; Place this in your ~/.doom.d/config.el
 (after! org-roam
-  ;; 1. Core Directory Setup
   (setq org-roam-directory (file-truename "~/Documents/org/roam"))
   (setq org-roam-db-autosync-mode t)
 
-  ;; 2. Visuals: Making the node list look clean
+  ;; Making the node list look clean
   (setq org-roam-node-display-template "${title:60} 🏷️ ${tags:*}")
   
-  ;; 3. Intelligent Capture Templates
-  ;; These automatically file notes into subfolders based on the type
   (setq org-roam-capture-templates
-        '(("d" "Default (General)" plain "%?"
-           :target (file+head "general/%<%Y%m%d%H%M%S>-${slug}.org" 
-                              "#+title: ${title}\n#+filetags: :draft:\n\n* Concepts\n")
+        '(("d" "Default (General)" plain ""
+           :target (file+head
+                    "general/%<%Y%m%d%H%M%S>-${slug}.org" 
+                    "#+title: ${title}\n#+filetags: :draft:\n#+date: %U\n\n* %^{topic}\n")
            :unnarrowed t)
-          ("c" "College" plain "%?"
- :target (file+head "college/%<%Y%m%d%H%M%S>-${slug}.org" 
-                    "#+title: ${title}\n#+filetags: :college:lecture:\n\n* Course: %^{Course Name}\n* Lecture: %^{Lecture #}\n* Date: %t\n\n* Objectives\n* Notes\n%?\n* Summary & Questions")
- :unnarrowed t)
-          ("p" "Programming/Dev" plain "%?"
-           :target (file+head "coding/%<%Y%m%d%H%M%S>-${slug}.org" 
-                              "#+title: ${title}\n#+filetags: :dev:concept:\n\n* Logic & Implementation\n#+begin_src %^{language}\n%?\n#+end_src")
+          
+          ("c" "College" plain ""
+           :target (file+head
+                    "college/%<%Y%m%d%H%M%S>-${slug}.org" 
+                    "#+title: ${title}\n#+filetags: :college:lecture:\n#+date:%U\n#+category: college\n\n* Course: %^{Course}\n* Lecture: %^{Lecture} \n\n")
+           :unnarrowed t)
+          
+          ("p" "Programming/Dev" plain ""
+           :target (file+head
+                    "coding/%<%Y%m%d%H%M%S>-${slug}.org" 
+                    "#+title: ${title}\n#+filetags: :dev:concept:\n#+date: %U\n#+category: computer\n\n* %^{topic}\n* Logic & Implementation\n#+begin_src %^{language}\n\n#+end_src")
            :unnarrowed t)))
-
-  ;; 4. Integrated Search with Consult
+  
   (use-package! consult-org-roam
     :init
     (consult-org-roam-mode 1)
