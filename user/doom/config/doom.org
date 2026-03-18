@@ -348,26 +348,29 @@ My org agenda view
   (setq org-roam-db-autosync-mode t)
 
   ;; Making the node list look clean
-  (setq org-roam-node-display-template "${title:60} 🏷️ ${tags:*}")
+  (setq org-roam-node-display-template "${title:60}  ️${tags:*}")
   
   (setq org-roam-capture-templates
-        '(("d" "Default (General)" plain ""
+        '(("d" "Default (General)" plain 
+           "* %^{topic}\n\n%?"
            :target (file+head
                     "general/%<%Y%m%d%H%M%S>-${slug}.org" 
-                    "#+title: ${title}\n#+filetags: :draft:\n#+date: %U\n\n* %^{topic}\n")
-           :unnarrowed t)
+                    "#+title: ${title}\n#+filetags: :draft:\n#+date: %U")
+           :unnarrowed t :empty-lines-before 1)
           
-          ("c" "College" plain ""
+          ("c" "College" plain 
+           "* Course: %^{Course}\n* Lecture: %^{Lecture}\n\n* %?"
            :target (file+head
                     "college/%<%Y%m%d%H%M%S>-${slug}.org" 
-                    "#+title: ${title}\n#+filetags: :college:lecture:\n#+date:%U\n#+category: college\n\n* Course: %^{Course}\n* Lecture: %^{Lecture} \n\n")
-           :unnarrowed t)
+                    "#+title: ${title}\n#+filetags: :college:lecture:\n#+date:%U\n#+category: college")
+           :unnarrowed t :empty-lines-before 1)
           
-          ("p" "Programming/Dev" plain ""
+          ("p" "Programming/Dev" plain 
+           "* %^{topic}\n* Logic & Implementation\n#+begin_src %^{language}\n\n#+end_src"
            :target (file+head
                     "coding/%<%Y%m%d%H%M%S>-${slug}.org" 
-                    "#+title: ${title}\n#+filetags: :dev:concept:\n#+date: %U\n#+category: computer\n\n* %^{topic}\n* Logic & Implementation\n#+begin_src %^{language}\n\n#+end_src")
-           :unnarrowed t)))
+                    "#+title: ${title}\n#+filetags: :dev:concept:\n#+date: %U\n#+category: computer")
+           :unnarrowed t :empty-lines-before 1)))
   
   (use-package! consult-org-roam
     :init
