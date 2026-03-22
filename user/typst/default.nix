@@ -9,6 +9,7 @@ in {
       typst # The compiler
       tinymist # The LSP (Language Server)
       typstyle # The Formatter
+      pandoc # The convertor
     ];
   };
 }

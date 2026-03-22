@@ -17,6 +17,7 @@
 
       nh.enable = true;
       ly.enable = true;
+      plymouth.enable = true;
 
       shell.enable = true;
       niri.enable = true;
@@ -54,6 +55,8 @@
       sxiv
       zathura
       emacs-pgtk
+      kdePackages.kdenlive
+
     ];
 
     system.stateVersion = "25.05"; # Did you read the comment?

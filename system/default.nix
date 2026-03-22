@@ -14,5 +14,6 @@
     ./sound
     ./bluetooth
     ./bin/doom-emacs.nix
+    ./plymouth
   ];
 }

@@ -10,7 +10,7 @@ in {
     boot.plymouth = {
       enable = true;
       # You can choose a default theme like "breeze", "spinner", or "glitch"
-      theme = "glitch";
+      theme = "spinner";
     };
 
     # This makes the boot process "silent" so the text doesn't flicker over the logo
