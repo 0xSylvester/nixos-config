@@ -434,7 +434,7 @@
 (use-package! lsp-mode  
   :config  
   ;; Register the language ID for your major mode  
-  (add-to-list 'lsp-language-id-configuration '(typst-ts-mode . "tinymist"))  
+  (add-to-list 'lsp-language-id-configuration '(typst-ts-mode . "typst"))  
     
   ;; Register the tinymist client  
   (lsp-register-client  

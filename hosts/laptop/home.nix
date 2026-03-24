@@ -20,6 +20,7 @@
       gammastep.enable = true;
       typst.enable = true;
       ksshaskpass.enable = true;
+      xdg.enable = true;
     };
 
     home.username = userSettings.username;

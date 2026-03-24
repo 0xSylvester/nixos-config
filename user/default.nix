@@ -18,5 +18,6 @@
     ./gammastep
     ./typst
     ./ksshaskpass
+    ./xdg
   ];
 }
