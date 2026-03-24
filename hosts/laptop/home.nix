@@ -29,7 +29,11 @@
     home.file = { };
     home.packages = [ ];
 
-    home.sessionVariables = { };
+    home.sessionVariables = {
+      # Forces GTK4 apps to use the stable OpenGL renderer 
+      # instead of the incomplete Haswell Vulkan driver.
+      GSK_RENDERER = "ngl";
+    };
 
     programs.home-manager.enable = true;
 
