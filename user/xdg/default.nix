@@ -48,7 +48,7 @@ in {
       comment = "Edit text files using the Doom Emacs ";
       exec = "emacsclient -c -a emacs %F";
       terminal = false;
-      icon = "emacs";
+      icon = "doom";
       categories = [ "Development" "TextEditor" ];
       mimeType = [ "text/plain" "text/rust" "text/org" ];
       settings = { Keywords = "Text;Editor;Write;Programming;"; };
