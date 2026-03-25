@@ -21,6 +21,7 @@
       typst.enable = true;
       ksshaskpass.enable = true;
       xdg.enable = true;
+      mpd.enable = true;
     };
 
     home.username = userSettings.username;

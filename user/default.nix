@@ -19,5 +19,6 @@
     ./typst
     ./ksshaskpass
     ./xdg
+    ./mpd
   ];
 }
