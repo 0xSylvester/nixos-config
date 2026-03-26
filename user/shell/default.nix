@@ -57,7 +57,6 @@ in {
       shellAliases = Aliases;
       sessionVariables = SessionVars;
       bashrcExtra = ''
-        set -o vi
         [ -f "$HOME/.cache/wallust/sequences" ] && cat $HOME/.cache/wallust/sequences 
       '';
       profileExtra = ''

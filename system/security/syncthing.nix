@@ -1,4 +1,4 @@
-{ config, lib, userSettings, ... }:
+{ config, lib, userSettings, pkgs, ... }:
 
 let cfg = config.systemSettings.security.syncthing;
 in {
@@ -20,5 +20,6 @@ in {
       overrideDevices = true; # Allow Nix to manage devices
       overrideFolders = true; # Allow Nix to manage folders
     };
+    environment.systemPackages = [ pkgs.syncthing ];
   };
 }

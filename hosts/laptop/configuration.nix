@@ -17,7 +17,7 @@
 
       nh.enable = true;
       ly.enable = true;
-      plymouth.enable = true;
+      #plymouth.enable = true;
 
       shell.enable = true;
       niri.enable = true;
