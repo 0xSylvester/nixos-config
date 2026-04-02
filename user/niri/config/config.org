@@ -354,7 +354,7 @@ window-rule {
 }
 
 window-rule {
-    match app-id="firefox"
+    match app-id="brave-browser"
     open-maximized true
     open-on-workspace "browser"
 }
