@@ -1,5 +1,5 @@
 { ... }:
 
 {
-  imports = [ ./c ./go ./js ./sh ./lua ./nix ./rust ];
+  imports = [ ./c ./go ./js ./sh ./lua ./nix ./rust ./asm ];
 }
