@@ -15,5 +15,6 @@
     ./bluetooth
     ./bin/doom-emacs.nix
     ./plymouth
+    #./sddm
   ];
 }

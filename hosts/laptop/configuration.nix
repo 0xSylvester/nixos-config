@@ -18,6 +18,7 @@
       nh.enable = true;
       ly.enable = true;
       #plymouth.enable = true;
+      #sddm.enable = true;
 
       shell.enable = true;
       niri.enable = true;
