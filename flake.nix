@@ -26,7 +26,7 @@
         browser = "brave";
         editor = "emacs";
         term = "foot";
-        theme = "twilight";
+        theme = "gruvbox";
         font = "Insonsolata";
         fontPkg = pkgs.inconsolata;
       };
@@ -38,10 +38,7 @@
       nixosConfigurations = {
         ${systemSettings.hostname} = lib.nixosSystem {
           system = systemSettings.system;
-          modules = [
-            (./. + "/hosts" + ("/" + systemSettings.host)
-              + "/configuration.nix")
-          ];
+          modules = [ "${./.}/hosts/${systemSettings.host}/configuration.nix" ];
           specialArgs = {
             # pass config variables from above
             inherit systemSettings;
@@ -54,8 +51,7 @@
       homeConfigurations = {
         sylvester = home-manager.lib.homeManagerConfiguration {
           inherit pkgs;
-          modules =
-            [ (./. + "/hosts" + ("/" + systemSettings.host) + "/home.nix") ];
+          modules = [ "${./.}/hosts/${systemSettings.host}/configuration.nix" ];
 
           extraSpecialArgs = {
             # pass config variables from above
