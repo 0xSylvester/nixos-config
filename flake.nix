@@ -51,7 +51,7 @@
       homeConfigurations = {
         sylvester = home-manager.lib.homeManagerConfiguration {
           inherit pkgs;
-          modules = [ "${./.}/hosts/${systemSettings.host}/configuration.nix" ];
+          modules = [ "${./.}/hosts/${systemSettings.host}/home.nix" ];
 
           extraSpecialArgs = {
             # pass config variables from above
