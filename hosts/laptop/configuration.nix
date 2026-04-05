@@ -1,4 +1,4 @@
-{ pkgs, systemSettings, ... }:
+{ pkgs, systemSettings, inputs, ... }:
 
 {
   imports = [
@@ -6,6 +6,8 @@
     ./hardware-configuration.nix
     ./users.nix
     ../../system
+    inputs.disko.nixosModules.disko
+    ./disko.nix
   ];
 
   config = {
