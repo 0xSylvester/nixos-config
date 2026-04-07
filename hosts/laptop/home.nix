@@ -22,6 +22,7 @@
       ksshaskpass.enable = true;
       xdg.enable = true;
       mpd.enable = true;
+      cursor.enable = true;
     };
 
     home.username = userSettings.username;
@@ -31,7 +32,7 @@
     home.packages = [ ];
 
     home.sessionVariables = {
-      # Forces GTK4 apps to use the stable OpenGL renderer 
+      # Forces GTK4 apps to use the stable OpenGL renderer
       # instead of the incomplete Haswell Vulkan driver.
       GSK_RENDERER = "ngl";
     };

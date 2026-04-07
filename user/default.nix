@@ -20,5 +20,6 @@
     ./ksshaskpass
     ./xdg
     ./mpd
+    ./cursor
   ];
 }
