@@ -1,4 +1,9 @@
-{ pkgs, systemSettings, inputs, ... }:
+{
+  pkgs,
+  systemSettings,
+  inputs,
+  ...
+}:
 
 {
   imports = [
@@ -21,6 +26,8 @@
       ly.enable = true;
       #plymouth.enable = true;
       #sddm.enable = true;
+
+      docker.enable = true;
 
       shell.enable = true;
       niri.enable = true;
@@ -48,7 +55,10 @@
 
     # Set your time zone.
     time.timeZone = systemSettings.timeZone;
-    nix.settings.experimental-features = [ "nix-command" "flakes" ];
+    nix.settings.experimental-features = [
+      "nix-command"
+      "flakes"
+    ];
 
     # List packages installed in system profile.
     environment.systemPackages = with pkgs; [
@@ -69,4 +79,3 @@
   };
 
 }
-
