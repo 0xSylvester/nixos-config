@@ -1,7 +1,15 @@
-{ config, lib, pkgs, pkgs-unstable, ... }:
+{
+  config,
+  lib,
+  pkgs,
+  pkgs-unstable,
+  ...
+}:
 
-let cfg = config.systemSettings.niri;
-in {
+let
+  cfg = config.systemSettings.niri;
+in
+{
   options.systemSettings.niri = {
     enable = lib.mkEnableOption "Enable niri scrolling window manager";
   };
@@ -22,8 +30,8 @@ in {
       wl-clipboard-rs
       wl-clip-persist
       xdg-desktop-portal-gnome
+      wl-mirror
     ];
 
   };
 }
-
