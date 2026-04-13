@@ -6,7 +6,8 @@
 (setq doom-symbol-font (font-spec :family "Inconsolata Nerd Font Propo"))
 (setq doom-emoji-font (font-spec :family "Inconsolata Nerd Font Propo"))
 
-(setq doom-theme 'doom-gruvbox)
+;;(setq doom-theme 'doom-gruvbox)
+(setq doom-theme 'doom-dark-decay)
 (setq custom-safe-themes t)
 
 (setq doom-modeline-height 30)

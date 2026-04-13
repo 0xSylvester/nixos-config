@@ -57,7 +57,8 @@ You can the set theme manually with buildin function =load-theme= or use the =do
 
 #+begin_src emacs-lisp :tangle config.el
 
-(setq doom-theme 'doom-gruvbox)
+;;(setq doom-theme 'doom-gruvbox)
+(setq doom-theme 'doom-dark-decay)
 (setq custom-safe-themes t)
 
 #+end_src

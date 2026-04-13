@@ -1,7 +1,15 @@
-{ config, lib, pkgs, userSettings, ... }:
+{
+  config,
+  lib,
+  pkgs,
+  userSettings,
+  ...
+}:
 
-let cfg = config.systemSettings.fonts;
-in {
+let
+  cfg = config.systemSettings.fonts;
+in
+{
   options.systemSettings.fonts = {
     enable = lib.mkEnableOption "Setup fonts";
 
@@ -15,6 +23,7 @@ in {
       # Modern Wayland/Niri essentials
       nerd-fonts.symbols-only # Great for Waybar icons
       noto-fonts-emoji-blob-bin # High-quality emojis
+      amiri
     ];
 
     # This part is crucial for Niri and Firefox to pick the right fonts
