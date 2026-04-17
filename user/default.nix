@@ -21,5 +21,6 @@
     ./xdg
     ./mpd
     ./cursor
+    ./direnv
   ];
 }

@@ -23,6 +23,7 @@
       xdg.enable = true;
       mpd.enable = true;
       cursor.enable = true;
+      direnv.enable = true;
     };
 
     home.username = userSettings.username;
