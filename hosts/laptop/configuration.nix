@@ -73,6 +73,7 @@
       nautilus
       imv
       graphviz
+      dbeaver-bin
       isync
       mu
     ];
