@@ -47,6 +47,7 @@
       lang.c.enable = true;
       lang.js.enable = true;
       lang.assembly.enable = true;
+      lang.python.enable = true;
 
     };
     # Use the systemd-boot EFI boot loader.
