@@ -49,6 +49,7 @@
       lang.assembly.enable = true;
       lang.python.enable = true;
 
+      nix-ld.enable = true;
     };
     # Use the systemd-boot EFI boot loader.
     boot.loader.systemd-boot.enable = true;

@@ -16,6 +16,7 @@
     ./bin/doom-emacs.nix
     ./plymouth
     ./docker
+    ./nix-ld
     #./sddm
   ];
 }
