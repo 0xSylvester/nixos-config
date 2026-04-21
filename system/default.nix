@@ -17,6 +17,7 @@
     ./plymouth
     ./docker
     ./nix-ld
+    ./steam
     #./sddm
   ];
 }
