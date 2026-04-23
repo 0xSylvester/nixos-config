@@ -19,6 +19,7 @@
     ./nix-ld
     ./steam
     ./brasero
+    ./virtualization
     #./sddm
   ];
 }

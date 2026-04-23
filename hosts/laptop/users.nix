@@ -12,6 +12,7 @@
       "dialout"
       "docker"
       "cdrom"
+      "libvirtd"
     ];
     packages = with pkgs; [ ];
   };

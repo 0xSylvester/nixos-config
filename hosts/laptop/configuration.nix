@@ -28,6 +28,7 @@
       #sddm.enable = true;
 
       docker.enable = true;
+      virtualization.enable = true;
 
       shell.enable = true;
       niri.enable = true;
