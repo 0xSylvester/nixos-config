@@ -31,6 +31,8 @@
 
       shell.enable = true;
       niri.enable = true;
+      steam.enable = false;
+      brasero.enable = true;
 
       nsync.enable = true;
 

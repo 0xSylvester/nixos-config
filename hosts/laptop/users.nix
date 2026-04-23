@@ -11,6 +11,7 @@
       "ydotool"
       "dialout"
       "docker"
+      "cdrom"
     ];
     packages = with pkgs; [ ];
   };

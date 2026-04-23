@@ -18,6 +18,7 @@
     ./docker
     ./nix-ld
     ./steam
+    ./brasero
     #./sddm
   ];
 }
