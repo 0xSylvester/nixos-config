@@ -15,7 +15,15 @@ in
   };
 
   config = lib.mkIf cfg.enable {
-    nixpkgs.config.allowUnfree = true;
+    #nixpkgs.config.allowUnfree = true;
+    nixpkgs.config.allowUnfreePredicate =
+      pkg:
+      builtins.elem (lib.getName pkg) [
+        "steam"
+        "steam-original"
+        "steam-run"
+        "steam-unwrapped"
+      ];
     programs.steam = {
       enable = true;
       remotePlay.openFirewall = true;
