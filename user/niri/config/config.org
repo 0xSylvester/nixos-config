@@ -157,7 +157,7 @@ spawn-at-startup "hypridle"
 spawn-sh-at-startup "emacs --daemon"
 spawn-at-startup "Telegram"
 spawn-at-startup "blueman-applet"
-//spawn-at-startup "mako"
+spawn-sh-at-startup "wayscriber -d"
 
 #+end_src
 
@@ -332,6 +332,10 @@ window-rule {
     opacity 0.85
     geometry-corner-radius 12
     clip-to-geometry true
+    
+    background-effect {
+        blur true
+    }
 }
 
 window-rule {
@@ -345,12 +349,6 @@ window-rule {
     open-maximized true
     open-on-workspace "Emacs"
     opacity 0.85
-}
-
-window-rule {
-    match app-id="emacs"
-    open-maximized true
-    open-on-workspace "Emacs"
 }
 
 window-rule {
@@ -381,5 +379,15 @@ window-rule {
     match app-id="org.kde.kdenlive"
     open-maximized true
     open-on-workspace "OBS"
+}
+
+layer-rule {
+    match namespace="^wofi"
+    geometry-corner-radius 8
+    opacity 0.99
+
+    background-effect {
+        blur true
+    }
 }
 #+end_src
