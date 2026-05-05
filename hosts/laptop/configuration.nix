@@ -51,6 +51,7 @@
       lang.js.enable = true;
       lang.assembly.enable = true;
       lang.python.enable = true;
+      lang.haskell.enable = true;
 
       nix-ld.enable = true;
     };

@@ -11,5 +11,6 @@
     ./rust
     ./asm
     ./python
+    ./haskell
   ];
 }
