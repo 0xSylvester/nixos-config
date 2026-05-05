@@ -54,6 +54,7 @@
       lang.haskell.enable = true;
 
       nix-ld.enable = true;
+      zram.enable = true;
     };
     # Use the systemd-boot EFI boot loader.
     boot.loader.systemd-boot.enable = true;

@@ -20,6 +20,7 @@
     ./steam
     ./brasero
     ./virtualization
+    ./zram
     #./sddm
   ];
 }
