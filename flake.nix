@@ -4,13 +4,25 @@
   inputs = {
     nixpkgs.url = "nixpkgs/nixos-25.11";
     nixpkgs-unstable.url = "nixpkgs/nixos-unstable";
+
     home-manager.url = "github:nix-community/home-manager/release-25.11";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
+
     disko.url = "github:nix-community/disko";
     disko.inputs.nixpkgs.follows = "nixpkgs";
+
+    helium.url = "github:AlvaroParker/helium-nix";
+    helium.inputs.nixpkgs.follows = "nixpkgs";
   };
 
-  outputs = inputs@{ self, nixpkgs, nixpkgs-unstable, home-manager, ... }:
+  outputs =
+    inputs@{
+      self,
+      nixpkgs,
+      nixpkgs-unstable,
+      home-manager,
+      ...
+    }:
     let
       systemSettings = {
         system = "x86_64-linux";
@@ -36,7 +48,8 @@
       lib = nixpkgs.lib;
       pkgs = nixpkgs.legacyPackages.${systemSettings.system};
       pkgs-unstable = nixpkgs-unstable.legacyPackages.${systemSettings.system};
-    in {
+    in
+    {
       nixosConfigurations = {
         ${systemSettings.hostname} = lib.nixosSystem {
           system = systemSettings.system;

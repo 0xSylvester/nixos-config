@@ -83,6 +83,9 @@
       dbeaver-bin
       isync
       mu
+      jdk21
+      inputs.helium.packages.${system}.default
+
     ];
 
     system.stateVersion = "25.05"; # Did you read the comment?

@@ -1,4 +1,4 @@
-{ userSettings, ... }:
+{ userSettings, pkgs, ... }:
 
 {
   imports = [ ../../user ];
@@ -36,6 +36,7 @@
       # Forces GTK4 apps to use the stable OpenGL renderer
       # instead of the incomplete Haswell Vulkan driver.
       GSK_RENDERER = "ngl";
+      jAVA_HOME = "${pkgs.jdk21.home}";
     };
 
     programs.home-manager.enable = true;
