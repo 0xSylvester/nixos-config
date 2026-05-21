@@ -31,6 +31,7 @@ in
       wl-clip-persist
       xdg-desktop-portal-gnome
       wl-mirror
+      xwayland-satellite
     ];
 
   };

@@ -18,6 +18,7 @@ in
     environment.systemPackages = with pkgs; [
       python315
       ruff
+      manim
     ];
   };
 }
