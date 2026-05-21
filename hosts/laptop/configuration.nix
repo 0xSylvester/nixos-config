@@ -23,9 +23,9 @@
       security.adb.enable = true;
 
       nh.enable = true;
-      ly.enable = true;
+      #ly.enable = true;
       #plymouth.enable = true;
-      #sddm.enable = true;
+      gdm.enable = true;
 
       docker.enable = true;
       virtualization.enable = true;
@@ -34,6 +34,7 @@
       niri.enable = true;
       steam.enable = false;
       brasero.enable = true;
+      plasma.enable = true;
 
       nsync.enable = true;
 

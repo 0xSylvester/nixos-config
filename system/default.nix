@@ -21,6 +21,7 @@
     ./brasero
     ./virtualization
     ./zram
-    #./sddm
+    ./plasma
+    ./gdm
   ];
 }
