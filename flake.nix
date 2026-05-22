@@ -1,6 +1,15 @@
 {
   description = "My first flake";
 
+  nixConfig = {
+    extra-substituters = [
+      "https://noctalia.cachix.org"
+    ];
+    extra-trusted-public-keys = [
+      "noctalia.cachix.org-1:pCOR47nnMEo5thcxNDtzWpOxNFQsBRglJzxWPp3dkU4="
+    ];
+  };
+
   inputs = {
     nixpkgs.url = "nixpkgs/nixos-25.11";
     nixpkgs-unstable.url = "nixpkgs/nixos-unstable";
@@ -13,6 +22,10 @@
 
     helium.url = "github:AlvaroParker/helium-nix";
     helium.inputs.nixpkgs.follows = "nixpkgs";
+
+    noctalia = {
+      url = "github:noctalia-dev/noctalia-shell";
+    };
   };
 
   outputs =

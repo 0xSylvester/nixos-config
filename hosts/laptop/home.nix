@@ -1,7 +1,15 @@
-{ userSettings, pkgs, ... }:
+{
+  userSettings,
+  pkgs,
+  inputs,
+  ...
+}:
 
 {
-  imports = [ ../../user ];
+  imports = [
+    ../../user
+    inputs.noctalia.homeModules.default
+  ];
 
   config = {
     userSettings = {
@@ -9,21 +17,22 @@
       shell.enable = true;
       starship.enable = true;
       foot.enable = true;
-      waybar.enable = true;
-      wofi.enable = true;
+      #waybar.enable = true;
+      #wofi.enable = true;
       doom.enable = true;
-      mako.enable = true;
+      #mako.enable = true;
       wallust.enable = true;
-      hypr.enable = true;
+      #hypr.enable = true;
       fastfetch.enable = true;
       keepass.enable = true;
-      gammastep.enable = true;
+      #gammastep.enable = true;
       typst.enable = true;
       ksshaskpass.enable = true;
       xdg.enable = true;
       mpd.enable = true;
       cursor.enable = true;
       direnv.enable = true;
+      noctalia.enable = true;
     };
 
     home.username = userSettings.username;

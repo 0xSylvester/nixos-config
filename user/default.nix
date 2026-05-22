@@ -22,5 +22,6 @@
     ./mpd
     ./cursor
     ./direnv
+    ./noctalia
   ];
 }
