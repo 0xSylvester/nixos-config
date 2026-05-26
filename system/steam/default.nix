@@ -31,6 +31,13 @@ in
       localNetworkGameTransfers.openFirewall = true;
     };
 
+    environment.systemPackages = with pkgs; [
+
+      heroic
+      winetricks
+      vulkan-tools
+    ];
+
     programs.gamemode.enable = true;
 
   };
