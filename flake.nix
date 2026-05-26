@@ -50,7 +50,7 @@
         launcher = "wofi";
         appLauncher = "wofi --show drun";
         lock = "hyprlock";
-        browser = "brave";
+        browser = "helium";
         editor = "emacs";
         term = "foot";
         theme = "gruvbox";

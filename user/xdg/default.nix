@@ -1,10 +1,17 @@
-{ config, lib, pkgs, ... }:
+{
+  config,
+  lib,
+  pkgs,
+  userSettings,
+  ...
+}:
 
-let cfg = config.userSettings.xdg;
-in {
+let
+  cfg = config.userSettings.xdg;
+in
+{
   options.userSettings.xdg = {
-    enable =
-      lib.mkEnableOption "XDG MIME associations and base directory enforcement";
+    enable = lib.mkEnableOption "XDG MIME associations and base directory enforcement";
 
   };
 
@@ -12,6 +19,11 @@ in {
     xdg.mimeApps = {
       enable = true;
       defaultApplications = {
+        "x-scheme-handler/http" = [ "${userSettings.browser}.desktop" ];
+        "x-scheme-handler/https" = [ "${userSettings.browser}.desktop" ];
+        "x-scheme-handler/about" = [ "${userSettings.browser}.desktop" ];
+        "x-scheme-handler/unknown" = [ "${userSettings.browser}.desktop" ];
+
         "text/plain" = [ "doom.desktoop" ];
         "text/org" = [ "doom.desktoop" ];
         "text/markdown" = [ "doom.desktop" ];
@@ -49,9 +61,18 @@ in {
       exec = "emacsclient -c -a emacs %F";
       terminal = false;
       icon = "doom";
-      categories = [ "Development" "TextEditor" ];
-      mimeType = [ "text/plain" "text/rust" "text/org" ];
-      settings = { Keywords = "Text;Editor;Write;Programming;"; };
+      categories = [
+        "Development"
+        "TextEditor"
+      ];
+      mimeType = [
+        "text/plain"
+        "text/rust"
+        "text/org"
+      ];
+      settings = {
+        Keywords = "Text;Editor;Write;Programming;";
+      };
     };
   };
 }
