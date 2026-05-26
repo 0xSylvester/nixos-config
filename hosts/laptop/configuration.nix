@@ -86,6 +86,9 @@
       mu
       jdk21
       inputs.helium.packages.${system}.default
+      yt-dlp
+      ffmpeg
+      qbittorrent
 
     ];
 
