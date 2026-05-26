@@ -17,19 +17,6 @@ in
   config = lib.mkIf cfg.enable {
     programs.noctalia-shell = {
       enable = true;
-
-      settings = {
-        theme = {
-          mode = "light";
-          source = "builtin";
-          builtin = "gruvbox";
-        };
-
-        wallpaper = {
-          enabled = true;
-          default.path = "/home/${userSettings.username}/wallpapers";
-        };
-      };
     };
   };
 }
