@@ -36,9 +36,19 @@ in
       heroic
       winetricks
       vulkan-tools
+      protontricks
     ];
 
-    programs.gamemode.enable = true;
+    programs.gamemode = {
+      enable = true;
+      enableRenice = true; # Allows GameMode to change process priority (niceness)
+      settings = {
+        general = {
+          softrealtime = "auto";
+          renice = 10;
+        };
+      };
+    };
 
   };
 }

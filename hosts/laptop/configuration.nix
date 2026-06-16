@@ -32,7 +32,7 @@
 
       shell.enable = true;
       niri.enable = true;
-      steam.enable = false;
+      steam.enable = true;
       brasero.enable = true;
       #plasma.enable = true;
 
@@ -89,8 +89,16 @@
       yt-dlp
       ffmpeg
       qbittorrent
+      pkgs.ppsspp
 
+      inputs.prism-launcher.packages.${system}.default
     ];
+
+    i18n = {
+      defaultLocale = "en_US.UTF-8";
+
+      extraLocales = [ "ja_JP.UTF-8/UTF-8" ];
+    };
 
     system.stateVersion = "25.05"; # Did you read the comment?
 

@@ -13,6 +13,7 @@
       "docker"
       "cdrom"
       "libvirtd"
+      "gamemode"
     ];
     packages = with pkgs; [ ];
   };

@@ -1,7 +1,14 @@
-{ config, lib, pkgs, ... }:
+{
+  config,
+  lib,
+  pkgs,
+  ...
+}:
 
-let cfg = config.systemSettings.lang.js;
-in {
+let
+  cfg = config.systemSettings.lang.js;
+in
+{
   options.systemSettings.lang.js = {
     enable = lib.mkEnableOption "Enable js";
 
@@ -11,7 +18,7 @@ in {
     environment.systemPackages = with pkgs; [
       nodejs_24
       pnpm
-      nodePackages.prettier
+      prettier
       typescript-language-server
       vue-language-server
       typescript

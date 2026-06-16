@@ -11,10 +11,10 @@
   };
 
   inputs = {
-    nixpkgs.url = "nixpkgs/nixos-25.11";
+    nixpkgs.url = "nixpkgs/nixos-26.05";
     nixpkgs-unstable.url = "nixpkgs/nixos-unstable";
 
-    home-manager.url = "github:nix-community/home-manager/release-25.11";
+    home-manager.url = "github:nix-community/home-manager/release-26.05";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
 
     disko.url = "github:nix-community/disko";
@@ -26,6 +26,9 @@
     noctalia = {
       url = "github:noctalia-dev/noctalia-shell";
     };
+
+    prism-launcher.url = "path:/home/sylvester/repos/flakes/PrismLauncher";
+    prism-launcher.inputs.nixpkgs.follows = "nixpkgs";
   };
 
   outputs =
