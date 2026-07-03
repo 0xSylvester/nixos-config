@@ -24,7 +24,11 @@
     helium.inputs.nixpkgs.follows = "nixpkgs";
 
     noctalia = {
-      url = "github:noctalia-dev/noctalia-shell";
+      url = "github:noctalia-dev/noctalia/legacy-v4";
+    };
+
+    noctalia-v5 = {
+      url = "github:noctalia-dev/noctalia";
     };
 
     prism-launcher.url = "path:/home/sylvester/repos/flakes/PrismLauncher";

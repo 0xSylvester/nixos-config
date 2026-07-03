@@ -9,6 +9,8 @@
   imports = [
     ../../user
     inputs.noctalia.homeModules.default
+    inputs.noctalia-v5.homeModules.default
+
   ];
 
   config = {
