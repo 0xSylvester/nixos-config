@@ -1,4 +1,9 @@
-{ config, lib, userSettings, ... }:
+{
+  config,
+  lib,
+  userSettings,
+  ...
+}:
 
 let
   Aliases = {
@@ -7,7 +12,7 @@ let
     repos = "cd $HOME/repos";
     dl = "cd $HOME/Downloads";
 
-    # cp, mv,rm 
+    # cp, mv,rm
     cp = "cp -v";
     mv = "mv -v";
     rm = "rm -v";
@@ -21,10 +26,10 @@ let
     ll = "eza -l --color=auto --icons --group-directories-first";
     lla = "eza -la --color=auto --icons --group-directories-first";
 
-    # ip 
+    # ip
     ip = "ip --color=auto";
 
-    # grep 
+    # grep
     grep = "grep --color=auto";
 
     # du
@@ -37,12 +42,15 @@ let
     TERMINAL = userSettings.term;
     GRIM_DEFAULT_DIR = "$HOME/Pictures/screen";
 
+    ANDROID_HOME = "$HOME/Android/Sdk/";
+
     HISTCONTROL = "ignoreboth";
     HISTFILESIZE = "5000";
   };
 
   cfg = config.userSettings.shell;
-in {
+in
+{
   options.userSettings.shell = {
     enable = lib.mkEnableOption "Enable bash config";
 
@@ -65,6 +73,7 @@ in {
         [[ -d $HOME/go/bin/ ]] && export PATH="$PATH:$HOME/go/bin"
         [[ -d $HOME/.cargo/bin/ ]] && export PATH="$PATH:$HOME/.cargo/bin"
         [[ -d $HOME/.config/emacs/bin/ ]] && export PATH="$PATH:$HOME/.config/emacs/bin"
+        [[ -d $ANDROID_HOME ]] && export PATH="$PATH:$ANDROID_HOME/cmdline-tools/latest/bin:$ANDROID_HOME/platform-tools"
         # Start ssh-agent if it's not already running
         if ! pgrep -u "$USER" ssh-agent > /dev/null; then
             ssh-agent -s > "$HOME/.ssh/agent.env"
@@ -78,4 +87,3 @@ in {
     };
   };
 }
-

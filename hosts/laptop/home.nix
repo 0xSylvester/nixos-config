@@ -48,6 +48,7 @@
       # instead of the incomplete Haswell Vulkan driver.
       GSK_RENDERER = "ngl";
       jAVA_HOME = "${pkgs.jdk21.home}";
+      ANDROID_HOME = "/home/${userSettings.username}/Android/Sdk";
     };
 
     programs.home-manager.enable = true;
