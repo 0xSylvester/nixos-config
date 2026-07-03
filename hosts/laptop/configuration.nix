@@ -90,6 +90,8 @@
       ffmpeg
       qbittorrent
       pkgs.ppsspp
+      zotero
+      libreoffice
 
       inputs.prism-launcher.packages.${system}.default
     ];

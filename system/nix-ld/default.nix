@@ -18,6 +18,10 @@ in
     programs.nix-ld.libraries = with pkgs; [
       stdenv.cc.cc
       zlib
+      xorg.libX11
+      libpulseaudio
+      libpng
+      nss
     ];
   };
 }
