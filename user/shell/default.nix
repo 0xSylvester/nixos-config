@@ -74,6 +74,7 @@ in
         [[ -d $HOME/.cargo/bin/ ]] && export PATH="$PATH:$HOME/.cargo/bin"
         [[ -d $HOME/.config/emacs/bin/ ]] && export PATH="$PATH:$HOME/.config/emacs/bin"
         [[ -d $ANDROID_HOME ]] && export PATH="$PATH:$ANDROID_HOME/cmdline-tools/latest/bin:$ANDROID_HOME/platform-tools"
+        [[ -d $HOME/.local/share/pnpm/bin ]] && export PATH="$PATH:$HOME/.local/share/pnpm/bin"
         # Start ssh-agent if it's not already running
         if ! pgrep -u "$USER" ssh-agent > /dev/null; then
             ssh-agent -s > "$HOME/.ssh/agent.env"

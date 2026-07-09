@@ -92,7 +92,6 @@
       pkgs.ppsspp
       zotero
       libreoffice
-      flutter
       devenv
 
       inputs.prism-launcher.packages.${system}.default

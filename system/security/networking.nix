@@ -1,7 +1,14 @@
-{ config, lib, systemSettings, ... }:
+{
+  config,
+  lib,
+  systemSettings,
+  ...
+}:
 
-let cfg = config.systemSettings.security.networking;
-in {
+let
+  cfg = config.systemSettings.security.networking;
+in
+{
   options.systemSettings.security.networking = {
     enable = lib.mkEnableOption "Enable Network settings";
 
@@ -23,7 +30,7 @@ in {
     };
 
     networking.firewall = {
-      enable = true;
+      enable = false;
       # Example: allow local web development ports
       # allowedTCPPorts = [ 8000 8080 ];
       # allowedUDPPorts = [ 5353 ]; # For discovery
@@ -32,4 +39,3 @@ in {
     services.resolved.enable = true;
   };
 }
-
