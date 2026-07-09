@@ -136,7 +136,7 @@ layout {
     }
 }
 
-include "theme.kdl"
+include "noctalia.kdl"
 #+end_src
 
 * Overview
