@@ -3,7 +3,7 @@
     disk = {
       main = {
         type = "disk";
-        device = "/dev/sda"; # DOUBLE CHECK with lsblk!
+        device = "/dev/nvme0n1"; # DOUBLE CHECK with lsblk!
         content = {
           type = "gpt";
           partitions = {

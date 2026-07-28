@@ -20,7 +20,7 @@ in
     };
 
     programs.noctalia = {
-      enable = true;
+      enable = false;
     };
   };
 }

@@ -46,7 +46,7 @@
     let
       systemSettings = {
         system = "x86_64-linux";
-        hostname = "HP630-G1";
+        hostname = "T495s";
         host = "laptop";
         timeZone = "Africa/Tripoli";
       };

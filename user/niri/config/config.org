@@ -196,12 +196,13 @@ binds {
 
 ** Functions Keys
 #+begin_src kdl :tangle config.kdl
-    F6 allow-when-locked=true { spawn-sh "pactl set-sink-volume @DEFAULT_SINK@ -5%"; }
-    F5 allow-when-locked=true { spawn-sh "pactl set-sink-mute @DEFAULT_SINK@ toggle"; }
-    F7 allow-when-locked=true { spawn-sh "pactl set-sink-volume @DEFAULT_SINK@ +5%"; }
+    XF86AudioMute allow-when-locked=true { spawn-sh "pactl set-sink-mute @DEFAULT_SINK@ toggle"; }
+    XF86AudioLowerVolume allow-when-locked=true { spawn-sh "pactl set-sink-volume @DEFAULT_SINK@ -5%"; }
+    XF86AudioRaiseVolume allow-when-locked=true { spawn-sh "pactl set-sink-volume @DEFAULT_SINK@ +5%"; }
+    XF86AudioMicMute allow-when-locked=true { spawn "wpctl" "set-mute" "@DEFAULT_AUDIO_SOURCE@" "toggle"; }
 
-    F1 allow-when-locked=true {spawn-sh "brightnessctl set 5%-";}
-    F2 allow-when-locked=true {spawn-sh "brightnessctl set +5%";}
+    XF86MonBrightnessDown allow-when-locked=true {spawn-sh "brightnessctl set 5%-";}
+    XF86MonBrightnessUp allow-when-locked=true {spawn-sh "brightnessctl set +5%";}
 
 #+end_src
 
