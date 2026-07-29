@@ -1,5 +1,11 @@
 { ... }:
 
 {
-  imports = [ ./networking.nix ./sudo.nix ./syncthing.nix ./adb.nix ];
+  imports = [
+    ./networking.nix
+    ./sudo.nix
+    ./syncthing.nix
+    ./adb.nix
+    ./fprint.nix
+  ];
 }
