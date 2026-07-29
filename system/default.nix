@@ -23,5 +23,6 @@
     ./zram
     ./plasma
     ./gdm
+    ./power
   ];
 }
