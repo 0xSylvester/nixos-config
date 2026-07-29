@@ -23,6 +23,7 @@
   - [[#typst][Typst]]
   - [[#lsp][LSP]]
   - [[#ox-reveal][Ox-reveal]]
+  - [[#ghostel][Ghostel]]
 - [[#my-packageel][My package.el]]
 - [[#my-initel][My init.el]]
 #+END_QUOTE
@@ -57,8 +58,7 @@ You can the set theme manually with buildin function =load-theme= or use the =do
 
 #+begin_src emacs-lisp :tangle config.el
 
-;;(setq doom-theme 'doom-gruvbox)
-(setq doom-theme 'doom-dark-decay)
+(setq doom-theme 'doom-gruvbox)
 (setq custom-safe-themes t)
 
 #+end_src
@@ -627,6 +627,12 @@ Emacs MultiMedia System
 (setq org-reveal-root "https://cdn.jsdelivr.net/npm/reveal.js")
 #+end_src
 
+** Ghostel
+#+begin_src emacs-lisp :tangle config.el
+(use-package ghostel
+  :ensure t)
+#+end_src
+
 * My package.el
 This file contains the declare of all package that we want to install
 
@@ -684,6 +690,7 @@ For more info for packaging in doom read =Package management= in doom doc
 
 (package! ox-reveal)
 (package! tmr)
+(package! ghostel)
 
 (package! gt)
 (package! ssh-agency)

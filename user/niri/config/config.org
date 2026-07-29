@@ -184,7 +184,7 @@ animations {}
 ** Spawn
 #+begin_src kdl :tangle config.kdl
 binds {
-    Mod+Return hotkey-overlay-title="Open a Terminal: Foot" { spawn "foot"; }
+    Mod+Return hotkey-overlay-title="Open a Terminal: Ghostty" { spawn "ghostty"; }
     Mod+D hotkey-overlay-title="Run Application Launcher " { spawn-sh "noctalia-shell ipc call launcher toggle "; }
     //Mod+Shift+D hotkey-overlay-title="Run an Application: wofi" { spawn-sh "wofi --show drun";}
     Super+X hotkey-overlay-title="Lock the Screen" { spawn-sh "noctalia-shell ipc call lockScreen lock "; }
@@ -330,7 +330,7 @@ workspace "Telegram"
 workspace "OBS"
 
 window-rule {
-    match app-id="foot"
+    match app-id="com.mitchellh.ghostty"
     match app-id="emacs"
     opacity 0.85
     geometry-corner-radius 12

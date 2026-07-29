@@ -93,6 +93,7 @@
       zotero
       libreoffice
       devenv
+      ghostty
 
       inputs.prism-launcher.packages.${system}.default
     ];

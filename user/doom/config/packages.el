@@ -44,6 +44,7 @@
 
 (package! ox-reveal)
 (package! tmr)
+(package! ghostel)
 
 (package! gt)
 (package! ssh-agency)

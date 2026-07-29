@@ -6,8 +6,7 @@
 (setq doom-symbol-font (font-spec :family "Inconsolata Nerd Font Propo"))
 (setq doom-emoji-font (font-spec :family "Inconsolata Nerd Font Propo"))
 
-;;(setq doom-theme 'doom-gruvbox)
-(setq doom-theme 'doom-dark-decay)
+(setq doom-theme 'doom-gruvbox)
 (setq custom-safe-themes t)
 
 (setq doom-modeline-height 30)
@@ -450,3 +449,6 @@
 
 (use-package! ox-reveal)
 (setq org-reveal-root "https://cdn.jsdelivr.net/npm/reveal.js")
+
+(use-package ghostel
+  :ensure t)
