@@ -44,6 +44,7 @@
       dbus.enable = true;
       fonts.enable = true;
       sound.enable = true;
+      power.enable = true;
 
       lang.rust.enable = true;
       lang.go.enable = true;
