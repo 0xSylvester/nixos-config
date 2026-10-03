@@ -42,6 +42,10 @@
            :repo "https://git.sr.ht/~meow_king/typst-ts-mode"))
 (package! ox-typst)
 
+(package! pest-mode
+  :recipe (:host github
+           :repo "ksqsf/pest-mode"))
+
 (package! ox-reveal)
 (package! tmr)
 (package! ghostel)

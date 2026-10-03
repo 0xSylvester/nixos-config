@@ -7,7 +7,6 @@
 (setq doom-emoji-font (font-spec :family "Inconsolata Nerd Font Propo"))
 
 (setq doom-theme 'doom-gruvbox)
-(setq custom-safe-themes t)
 
 (setq doom-modeline-height 30)
 
@@ -452,3 +451,13 @@
 
 (use-package ghostel
   :ensure t)
+
+(use-package! pest-mode
+  :hook (pest-mode . flymake-mode))
+
+(use-package! openwith
+  :ensure t
+  :config
+  (openwith-mode 1)
+  (setq openwith-associations
+        '(("\\.pdf\\'" "zathura" (file)))))

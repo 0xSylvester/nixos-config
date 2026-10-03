@@ -24,6 +24,8 @@
   - [[#lsp][LSP]]
   - [[#ox-reveal][Ox-reveal]]
   - [[#ghostel][Ghostel]]
+  - [[#pest][Pest]]
+  - [[#openwith][Openwith]]
 - [[#my-packageel][My package.el]]
 - [[#my-initel][My init.el]]
 #+END_QUOTE
@@ -59,7 +61,6 @@ You can the set theme manually with buildin function =load-theme= or use the =do
 #+begin_src emacs-lisp :tangle config.el
 
 (setq doom-theme 'doom-gruvbox)
-(setq custom-safe-themes t)
 
 #+end_src
 
@@ -633,6 +634,23 @@ Emacs MultiMedia System
   :ensure t)
 #+end_src
 
+** Pest
+#+begin_src emacs-lisp :tangle config.el
+(use-package! pest-mode
+  :hook (pest-mode . flymake-mode))
+#+end_src
+
+** Openwith
+#+begin_src emacs-lisp :tangle config.el
+(use-package! openwith
+  :ensure t
+  :config
+  (openwith-mode 1)
+  (setq openwith-associations
+        '(("\\.pdf\\'" "zathura" (file)))))
+#+end_src
+
+
 * My package.el
 This file contains the declare of all package that we want to install
 
@@ -687,6 +705,10 @@ For more info for packaging in doom read =Package management= in doom doc
   :recipe (:host nil
            :repo "https://git.sr.ht/~meow_king/typst-ts-mode"))
 (package! ox-typst)
+
+(package! pest-mode
+  :recipe (:host github
+           :repo "ksqsf/pest-mode"))
 
 (package! ox-reveal)
 (package! tmr)
