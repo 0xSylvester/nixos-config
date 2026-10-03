@@ -7,5 +7,6 @@
     ./syncthing.nix
     ./adb.nix
     ./fprint.nix
+    ./tailscale.nix
   ];
 }
