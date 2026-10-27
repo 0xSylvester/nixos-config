@@ -304,12 +304,6 @@
         org-download-image-latex-width 0.8
         org-download-annotate-function (lambda (_link) ""))) ; Removes the annoying timestamp text above images
 
-  ;; 5. Keybindings
-(map! :leader
-      :prefix ("n" . "notes")
-      :desc "Paste screenshot" "p" #'org-download-clipboard
-      :desc "Yank image URL"  "y" #'org-download-yank)
-
 (defun config/presentation-start ()
   (setq text-scale-mode-amount 3)
   (setq olivetti-body-width 60)
@@ -461,3 +455,5 @@
   (openwith-mode 1)
   (setq openwith-associations
         '(("\\.pdf\\'" "zathura" (file)))))
+
+(use-package codex)

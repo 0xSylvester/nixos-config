@@ -26,6 +26,7 @@
   - [[#ghostel][Ghostel]]
   - [[#pest][Pest]]
   - [[#openwith][Openwith]]
+  - [[#codex][Codex]]
 - [[#my-packageel][My package.el]]
 - [[#my-initel][My init.el]]
 #+END_QUOTE
@@ -428,12 +429,6 @@ My org agenda view
         org-download-image-latex-width 0.8
         org-download-annotate-function (lambda (_link) ""))) ; Removes the annoying timestamp text above images
 
-  ;; 5. Keybindings
-(map! :leader
-      :prefix ("n" . "notes")
-      :desc "Paste screenshot" "p" #'org-download-clipboard
-      :desc "Yank image URL"  "y" #'org-download-yank)
-
 #+end_src 
 
 ** Org presentation
@@ -650,6 +645,12 @@ Emacs MultiMedia System
         '(("\\.pdf\\'" "zathura" (file)))))
 #+end_src
 
+** Codex
+#+begin_src emacs-lisp :tangle config.el
+(use-package codex)
+#+end_src
+
+
 
 * My package.el
 This file contains the declare of all package that we want to install
@@ -705,6 +706,10 @@ For more info for packaging in doom read =Package management= in doom doc
   :recipe (:host nil
            :repo "https://git.sr.ht/~meow_king/typst-ts-mode"))
 (package! ox-typst)
+
+(package! codex
+  :recipe (:host nil
+           :repo "https://github.com/benthamite/codex"))
 
 (package! pest-mode
   :recipe (:host github

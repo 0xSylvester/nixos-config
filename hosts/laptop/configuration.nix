@@ -97,6 +97,7 @@
       libreoffice
       devenv
       ghostty
+      codex
 
       inputs.prism-launcher.packages.${system}.default
     ];
